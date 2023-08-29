@@ -34,6 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   //instanciando o obj counter
   Counter counter = Counter();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
-            ),
-           
+            ), 
             //irá observar uma mudança de estado e quando acontecer irá rebuildar a tela
             Observer(
               builder: (context) {
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        //chamando a function increment
+        //chamando a action increment
         onPressed: counter.increment,
         tooltip: 'Increment',
         child: const Icon(Icons.add),

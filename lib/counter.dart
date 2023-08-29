@@ -1,23 +1,21 @@
 import 'package:mobx/mobx.dart';
+part 'counter.g.dart';
+//informando q o counter usa part do arquvido gerado
 
-class Counter{
+//mesclando a class que vai ser gerada _$Counter com a class _Counter
+class Counter = _Counter with _$Counter;
 
-  //vinculando ação a função 
-  Counter(){
-    increment = Action(_increment);
-  }
+//Para usar o gerador roda o comando flutter packages pub run build_runner build
 
-  //instanciando um Observable(estado) 
-  Observable<int> _count = Observable(0);
+//gerando codigo com o build runner e codgen usa o with store 
+//abstract pq ñ é para permitir que instancie-se uma class _Counter
+abstract class _Counter with Store{
 
-  //fazendo um get count q irá retornar o valor contido no Observable
-  int get count => _count.value;
+  @observable
+  int count = 0;
 
-  //definindo a ação que vai mudar o estado do Observable
-  late Action increment;
-
-  //é ncessario vincular ação a função para funcionar 
-  void _increment(){
-    _count.value ++;
+  @action
+  void increment(){
+    count++;
   }
 }
